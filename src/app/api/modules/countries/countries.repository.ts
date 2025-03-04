@@ -1,11 +1,22 @@
-import { countries } from "../../../db/countries";
+import { countries } from "../../../../db/countries";
+import { Language} from "../../../../types/enums/language.enum";
 
 export default class CountriesRepository {
 
   private items = countries;
 
-  async get () {
-    return this.items;
+  private mapItemLocalized(item: any, language: Language){
+    return {
+      id: item.id,
+      name: item[`name_${language}`],
+      capital: item[`capital_${language}`],
+      area: item.area,
+      population: item.population
+    }
+  }
+
+  async get (language: Language) {
+    return this.items.map(item => this.mapItemLocalized(item, language));
   }
 
   async getById (id: number) {

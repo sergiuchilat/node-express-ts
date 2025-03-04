@@ -1,10 +1,11 @@
 import CountriesRepository from './countries.repository';
+import { Language} from "../../../../types/enums/language.enum";
 
 export default class CountriesService {
   private countriesRepository = new CountriesRepository();
 
-  async get() {
-    return this.countriesRepository.get()
+  async get(language: Language) {
+    return this.countriesRepository.get(language)
   }
 
   async getById(id: number) {

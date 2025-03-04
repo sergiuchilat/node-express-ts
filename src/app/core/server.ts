@@ -1,6 +1,7 @@
 import express, { Express } from "express";
 import registerRoutes from "./route.register";
 import bodyParser from "body-parser";
+import localizationMiddleware from "../middlewares/localization.middleware";
 
 export class Server {
   private readonly app: Express
@@ -14,8 +15,8 @@ export class Server {
     const router = express.Router()
     registerRoutes(router)
     this.app.use(bodyParser.json())
+    this.app.use(localizationMiddleware)
     this.app.use('/api', router)
-
   }
 
   public start(port: number) {

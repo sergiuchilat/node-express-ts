@@ -1,4 +1,4 @@
-import { regions } from "../../../db/regions";
+import { regions } from "../../../../db/regions";
 
 export default class RegionsRepository {
 

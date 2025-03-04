@@ -1,6 +1,7 @@
 import { Request, Response } from 'express';
 import CountriesService from "./countries.service";
 import BaseController from "../../../core/base.controller";
+import { Language} from "../../../../types/enums/language.enum";
 
 export default class CountriesController extends BaseController {
 
@@ -12,7 +13,9 @@ export default class CountriesController extends BaseController {
   }
 
   async get (req: Request, res: Response) {
-    res.send (await this.countriesService.get ());
+    const language: Language = req.language;
+
+    res.send (await this.countriesService.get (language));
   }
 
   async getById (req: Request, res: Response) {
