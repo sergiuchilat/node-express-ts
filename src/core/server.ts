@@ -1,5 +1,5 @@
 import express, { Express } from "express";
-import registerRoutes from "./routes";
+import registerRoutes from "./route.register";
 import bodyParser from "body-parser";
 
 export class Server {
